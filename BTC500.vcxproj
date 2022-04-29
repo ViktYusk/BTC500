@@ -143,13 +143,11 @@
   <ItemGroup>
     <ClCompile Include="base58.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ripemd160.cpp" />
     <ClCompile Include="sha256.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base58.h" />
-    <ClInclude Include="ripemd160.h" />
     <ClInclude Include="sha256.h" />
     <ClInclude Include="test.h" />
   </ItemGroup>

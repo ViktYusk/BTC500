@@ -5,7 +5,6 @@
 #include <string>
 
 #include "base58.h"
-#include "ripemd160.h"
 #include "sha256.h"
 
 #define ITERATIONS 0

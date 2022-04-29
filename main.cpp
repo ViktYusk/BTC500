@@ -84,14 +84,7 @@ void thread_function(int thread_id)
 
 int main(int argc, char* argv[])
 {
-	std::cout.precision(2);
-	//test();
-	//return 0;
-	//while (true)
-	//{
-		//for (int i = 0; i < PREFIX_LENGTH; i++)
-		//	prefix[i] = BASE58[rand() % 58];
-		//prefix[PREFIX_LENGTH] = 0;
+	
 	if (argc < 2)
 	{
 		std::cout << "[E] No parameter with WIF prefix" << std::endl;
@@ -110,21 +103,21 @@ int main(int argc, char* argv[])
 			std::cout << "[E] Wrong symbol of WIF prefix: " << prefix[i] << std::endl;
 			return 0;
 		}
-		std::cout << "[I] CHECKING WIF PREFIX " << prefix << ":" << std::endl;
-		threads_number = std::thread::hardware_concurrency();
-		if (!threads_number)
-			threads_number = 1;
-		std::thread* threads = new std::thread[threads_number];
-		threads_progresses = new int[threads_number] { 0 };
-		progresses_number = (58 / threads_number + (bool)(58 % threads_number)) * 58;
-		timer = Timer();
-		for (int t = 0; t < threads_number; t++)
-			threads[t] = std::thread(thread_function, t);
-		for (int t = 0; t < threads_number; t++)
-			threads[t].join();
-		delete[] threads;
-		delete[] threads_progresses;
-		std::cout << "[I] WIF PREFIX " << prefix << " CHECKED" << std::endl;
-	//}
+	std::cout.precision(2);
+	std::cout << "[I] CHECKING WIF PREFIX " << prefix << ":" << std::endl;
+	threads_number = std::thread::hardware_concurrency();
+	if (!threads_number)
+		threads_number = 1;
+	std::thread* threads = new std::thread[threads_number];
+	threads_progresses = new int[threads_number] { 0 };
+	progresses_number = (58 / threads_number + (bool)(58 % threads_number)) * 58;
+	timer = Timer();
+	for (int t = 0; t < threads_number; t++)
+		threads[t] = std::thread(thread_function, t);
+	for (int t = 0; t < threads_number; t++)
+		threads[t].join();
+	delete[] threads;
+	delete[] threads_progresses;
+	std::cout << "[I] WIF PREFIX " << prefix << " CHECKED" << std::endl;
 	return 0;
 }
